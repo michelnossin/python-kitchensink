@@ -1,0 +1,154 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n\nThis notebook is my personal Python kitchensink , it uses Python 3.4 within Zeppelin\n",
+      "user": "anonymous",
+      "dateUpdated": "Jan 14, 2018 9:42:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis notebook is my personal Python kitchensink , it uses Python 3.4 within Zeppelin\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1515966118253_-1684150353",
+      "id": "20180114-214158_1131317020",
+      "dateCreated": "Jan 14, 2018 9:41:58 PM",
+      "dateStarted": "Jan 14, 2018 9:42:29 PM",
+      "dateFinished": "Jan 14, 2018 9:42:31 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\npython -V",
+      "user": "anonymous",
+      "dateUpdated": "Jan 14, 2018 9:41:39 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Python 3.4.2\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1515966028449_629205222",
+      "id": "20180114-214028_1764881444",
+      "dateCreated": "Jan 14, 2018 9:40:28 PM",
+      "dateStarted": "Jan 14, 2018 9:41:39 PM",
+      "dateFinished": "Jan 14, 2018 9:41:39 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\u0027\u0027\u0027 This is my Python kitchensink. Describe all components in the current file \u0027\u0027\u0027\r\n\r\nclass Point:\r\n    \u0027\u0027\u0027Put your class description here and how to use it\u0027\u0027\u0027\r\n    def __init__(self, x, y):\r\n        \u0027\u0027\u0027Describe X and Y . Make sure to create a constructor to init required parameters, or call required methods\u0027\u0027\u0027\r\n        self.move(x, y)\r\n\r\n    def move(self, x, y):\r\n        \u0027\u0027\u0027Documentation for each component should be added\u0027\u0027\u0027 \r\n        self.x \u003d x\r\n        self.y \u003d y\r\n\r\n    def reset(self):\r\n        \u0027\u0027\u0027All methods should at least have 1 argument point to itself\u0027\u0027\u0027\r\n        self.move(0, 0)\r\n\r\n# Seperate pieces of code should also be documented\r\npoint \u003d Point(3, 5)\r\nprint(point.x, point.y)",
+      "user": "anonymous",
+      "dateUpdated": "Jan 14, 2018 9:51:05 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "3 5\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1515965989234_-1783216354",
+      "id": "20180114-213949_299255473",
+      "dateCreated": "Jan 14, 2018 9:39:49 PM",
+      "dateStarted": "Jan 14, 2018 9:48:44 PM",
+      "dateFinished": "Jan 14, 2018 9:48:44 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "Jan 14, 2018 9:39:59 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1515965996011_423318588",
+      "id": "20180114-213956_1186414599",
+      "dateCreated": "Jan 14, 2018 9:39:56 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "python-kitchensink",
+  "id": "2D59JUDTR",
+  "angularObjects": {
+    "2D28D18EM:shared_process": [],
+    "2D1KQV8RK:shared_process": [],
+    "2CZM77WW6:shared_process": [],
+    "2CY5ASEHH:shared_process": [],
+    "2CZTG3WJA:shared_process": [],
+    "2CZP9NCGW:shared_process": [],
+    "2D23VCUHP:shared_process": [],
+    "2CY3UAQ65:shared_process": [],
+    "2CZ5FXHTZ:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
