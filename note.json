@@ -75,9 +75,47 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "\u0027\u0027\u0027 This is my Python kitchensink. Describe all components in the current file \u0027\u0027\u0027\r\n\r\nclass Point:\r\n    \u0027\u0027\u0027Put your class description here and how to use it\u0027\u0027\u0027\r\n    def __init__(self, x, y):\r\n        \u0027\u0027\u0027Describe X and Y . Make sure to create a constructor to init required parameters, or call required methods\u0027\u0027\u0027\r\n        self.move(x, y)\r\n\r\n    def move(self, x, y):\r\n        \u0027\u0027\u0027Documentation for each component should be added\u0027\u0027\u0027 \r\n        self.x \u003d x\r\n        self.y \u003d y\r\n\r\n    def reset(self):\r\n        \u0027\u0027\u0027All methods should at least have 1 argument point to itself\u0027\u0027\u0027\r\n        self.move(0, 0)\r\n\r\n# Seperate pieces of code should also be documented\r\npoint \u003d Point(3, 5)\r\nprint(point.x, point.y)",
+      "title": "Create remote python module for test purpose only , so we can import it",
+      "text": "%sh\necho \"class Otherclass:\" \u003e otherclass.py\necho \"  def __init__(self,x,y):\" \u003e\u003e otherclass.py\necho \"     print(\u0027In Otherclass constructor\u0027)\" \u003e\u003e otherclass.py\ncat otherclass.py",
       "user": "anonymous",
-      "dateUpdated": "Jan 14, 2018 9:51:05 PM",
+      "dateUpdated": "Jan 14, 2018 10:44:49 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "class Otherclass:\n  def __init__(self,x,y):\n     print(\u0027In Otherclass constructor\u0027)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1515968900015_1522501270",
+      "id": "20180114-222820_376346806",
+      "dateCreated": "Jan 14, 2018 10:28:20 PM",
+      "dateStarted": "Jan 14, 2018 10:44:46 PM",
+      "dateFinished": "Jan 14, 2018 10:44:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\u0027\u0027\u0027 This is my Python kitchensink. Describe all components in the current file \u0027\u0027\u0027\r\n\r\n#In zeppelin the notebook is seperate from our shell output, so we can only import our module using absolute path. (python 3.4 only)\r\nfrom importlib.machinery import SourceFileLoader\r\nsomefile \u003d SourceFileLoader(\"Otherclass\", \"/usr/zeppelin/otherclass.py\").load_module()\r\n\r\n#Normal import, use this:  from otherclass import Otherclass (\"as alias\" optionally) . Never use import * as it bad practise. Use from \u003cFile\u003e import Class1, Class2 to load multiple\r\n\r\nclass Point:\r\n    \u0027\u0027\u0027Put your class description here and how to use it\u0027\u0027\u0027\r\n    def __init__(self, x, y):\r\n        \u0027\u0027\u0027Describe X and Y . Make sure to create a constructor to init required parameters, or call required methods\u0027\u0027\u0027\r\n        self.move(x, y, \"Beginning\")\r\n        self.protect(\"donottell\")\r\n        \r\n        #Call our remote class. In this case the file load class is required.\r\n        other \u003d somefile.Otherclass(4,5)\r\n\r\n    def protect (self,some_secret\u003d\"password\"):\r\n        \u0027\u0027\u0027Save the parameter as hidden private property\u0027\u0027\u0027\r\n        self.__some_secret \u003d some_secret  #__property should be seen as private, but is not really!\r\n        \r\n    def move(self, x, y,some_text\u003d\"Default text\"):\r\n        \u0027\u0027\u0027Documentation for each component should be added. some_text is optional due to default value\u0027\u0027\u0027 \r\n        self.x \u003d x\r\n        self.y \u003d y\r\n        \r\n        class DefaultFormatter:\r\n            \u0027\u0027\u0027Format a string in title case. Inline class within a function\u0027\u0027\u0027\r\n            def format(self, string):\r\n                return str(string).title()\r\n        \r\n        formatter \u003d DefaultFormatter().format(some_text)\r\n        print(\"Move output:\" + formatter)\r\n    \r\n    def reset(self):\r\n        \u0027\u0027\u0027All methods should at least have 1 argument point to itself\u0027\u0027\u0027\r\n        self.move(0, 0, \"Resetting\")\r\n\r\nclass Database:\r\n    \u0027\u0027\u0027 This will be a future class\u0027\u0027\u0027\r\n    pass\r\n    \r\ndef main():\r\n    \u0027\u0027\u0027main entry point of our program. Automatically called at startup\u0027\u0027\u0027\r\n    point \u003d Point(3, 5)\r\n    print(point.x, point.y)\r\n    print (\"secret: \" + point._Point__some_secret)  #hmm it shows\r\n\r\nif __name__ \u003d\u003d \"__main__\":\r\n    main()\r\n\r\n#As we are in Zeppelin we have to execute it manually\r\nmain()\r\n\r\n",
+      "user": "anonymous",
+      "dateUpdated": "Jan 17, 2018 7:20:51 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -97,7 +135,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "3 5\n"
+            "data": "Move output:Beginning\nIn Otherclass constructor\n3 5\nsecret: donottell\n"
           }
         ]
       },
@@ -105,15 +143,96 @@
       "jobName": "paragraph_1515965989234_-1783216354",
       "id": "20180114-213949_299255473",
       "dateCreated": "Jan 14, 2018 9:39:49 PM",
-      "dateStarted": "Jan 14, 2018 9:48:44 PM",
-      "dateFinished": "Jan 14, 2018 9:48:44 PM",
+      "dateStarted": "Jan 17, 2018 7:20:07 PM",
+      "dateFinished": "Jan 17, 2018 7:20:07 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "",
+      "title": "Packages , use external code",
+      "text": "%sh\n\npip install requests",
       "user": "anonymous",
-      "dateUpdated": "Jan 14, 2018 9:39:59 PM",
+      "dateUpdated": "Jan 17, 2018 7:37:15 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Requirement already satisfied: requests in /usr/local/lib/python3.4/dist-packages\nRequirement already satisfied: idna\u003c2.7,\u003e\u003d2.5 in /usr/local/lib/python3.4/dist-packages (from requests)\nRequirement already satisfied: urllib3\u003c1.23,\u003e\u003d1.21.1 in /usr/local/lib/python3.4/dist-packages (from requests)\nRequirement already satisfied: certifi\u003e\u003d2017.4.17 in /usr/local/lib/python3.4/dist-packages (from requests)\nRequirement already satisfied: chardet\u003c3.1.0,\u003e\u003d3.0.2 in /usr/local/lib/python3.4/dist-packages (from requests)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1516215082198_-214758236",
+      "id": "20180117-185122_1998663895",
+      "dateCreated": "Jan 17, 2018 6:51:22 PM",
+      "dateStarted": "Jan 17, 2018 7:36:44 PM",
+      "dateFinished": "Jan 17, 2018 7:36:44 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Virtual env",
+      "text": "%sh\n\ncd $HOME\npython -m venv env\nsource env/bin/activate  # on Linux or MacOS\n#env/bin/activate.bat     # on Windows",
+      "user": "anonymous",
+      "dateUpdated": "Jan 17, 2018 7:49:44 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Error: Command \u0027[\u0027/root/env/bin/python\u0027, \u0027-Im\u0027, \u0027ensurepip\u0027, \u0027--upgrade\u0027, \u0027--default-pip\u0027]\u0027 returned non-zero exit status 1\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "ExitValue: 1"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1516217848181_2045765193",
+      "id": "20180117-193728_1073529609",
+      "dateCreated": "Jan 17, 2018 7:37:28 PM",
+      "dateStarted": "Jan 17, 2018 7:39:38 PM",
+      "dateFinished": "Jan 17, 2018 7:39:38 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "help() shows the documentation",
+      "text": "help(Point)",
+      "user": "anonymous",
+      "dateUpdated": "Jan 17, 2018 6:44:03 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -122,16 +241,84 @@
           "language": "python",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/python"
+        "editorMode": "ace/mode/python",
+        "title": true
       },
       "settings": {
         "params": {},
         "forms": {}
       },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Help on class Point in module builtins:\n\nclass Point(object)\n |  Put your class description here and how to use it\n |  \n |  Methods defined here:\n |  \n |  __init__(self, x, y)\n |      Describe X and Y . Make sure to create a constructor to init required parameters, or call required methods\n |  \n |  move(self, x, y)\n |      Documentation for each component should be added\n |  \n |  reset(self)\n |      All methods should at least have 1 argument point to itself\n |  \n |  ----------------------------------------------------------------------\n |  Data descriptors defined here:\n |  \n |  __dict__\n |      dictionary for instance variables (if defined)\n |  \n |  __weakref__\n |      list of weak references to the object (if defined)\n\n"
+          }
+        ]
+      },
       "apps": [],
       "jobName": "paragraph_1515965996011_423318588",
       "id": "20180114-213956_1186414599",
       "dateCreated": "Jan 14, 2018 9:39:56 PM",
+      "dateStarted": "Jan 17, 2018 6:44:03 PM",
+      "dateFinished": "Jan 17, 2018 6:44:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Package (folder structure)",
+      "text": "%md\n\n```\n#In zeppelin packages is not very usable, its more for bigger projects using IDE\u0027s \n\n#Absolute imports in current package\nfrom ecommerce.products import Product\nproduct \u003d Product()\n\n#Relative import\nfrom .database import Database\nfrom ..database import Database  #In parent package use database.py \u0027s Database class\n```",
+      "user": "anonymous",
+      "dateUpdated": "Jan 17, 2018 6:42:55 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "title": true,
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cpre\u003e\u003ccode\u003e#In zeppelin packages is not very usable, its more for bigger projects using IDE\u0026#39;s \n\n#Absolute imports in current package\nfrom ecommerce.products import Product\nproduct \u003d Product()\n\n#Relative import\nfrom .database import Database\nfrom ..database import Database  #In parent package use database.py \u0026#39;s Database class\n\u003c/code\u003e\u003c/pre\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1516214012445_1784467092",
+      "id": "20180117-183332_493252904",
+      "dateCreated": "Jan 17, 2018 6:33:32 PM",
+      "dateStarted": "Jan 17, 2018 6:42:55 PM",
+      "dateFinished": "Jan 17, 2018 6:42:56 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n",
+      "user": "anonymous",
+      "dateUpdated": "Jan 17, 2018 6:36:29 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1516214189965_-1841777612",
+      "id": "20180117-183629_180612740",
+      "dateCreated": "Jan 17, 2018 6:36:29 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
